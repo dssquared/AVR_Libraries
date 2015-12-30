@@ -1,15 +1,27 @@
-/**************************************************************
-****        header file/AVR library for 44780 LCD          ****
-****  uses 4-bit mode of LCD, set ports/pins accordinglly  ****
-**** this example uses PortD of AVR for 4-bit LCD data bus ****
-****           and PortB for the LCD control pins,         ****
-****    assumed LCD R/W is pulled low (only writting)      ****
-****    author: David Schwehr 2015                         ****
-**************************************************************/
+/***********************************************************
+****  Title: C include file for LCD library (lcd.c)     ****
+****  Author: David Schwehr 2015                        ****
+****  File:                                             ****
+****  Software:                                         ****
+****  Target:                                           ****
+************************************************************/
+/**
+@mainpage
+@author
+@file
+@code
+@brief
+@see
+@version
+@copyright
+ */
 
 #ifndef LCD_H
 #define LCD_H
 
+/**
+* @name definitions
+*/
 #ifndef LCD_CONTROL               // LCD control port of MCU //
 #define LCD_CONTROL     PORTB
 #endif
@@ -48,18 +60,116 @@ typedef int8_t sbyte;
 #define clear_bit(sfr, bit)   (_SFR_BYTE(sfr) &= ~BV(bit)) // old cbi()
 #define toggle_bit(sfr, bit)  (_SFR_BYTE(sfr) ^= BV(bit))  
 
+
+/**
+* @name functions
+*/
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void pulseEnable(void);
+
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void sendNibble(byte data);
+
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void sendByte(byte data);
+
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_cmd(byte cmd);
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_char(byte ch);
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_init();
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_clear();
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_home();
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_goto(byte x, byte y);
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_line(byte row);
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_message(const char *text);
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_hex(int data);
+
+/**
+ @brief
+ @param
+ @return   none
+ @see      
+*/
 void LCD_integer(int data);
 
 
