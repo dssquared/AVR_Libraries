@@ -38,27 +38,29 @@
 #define CLEARDISPLAY   0X01
 #define SETCURSOR      0X80
 
+typedef uint8_t byte;
+typedef int8_t sbyte;
 
 // if macros.h is included from any other file this is not needed
-// but use #ifndef to be safe here and just confirms macros are linked
-//    ?? maybe use ifndef to check and include macros ????
-#ifndef BV()
+// ?? maybe just include macros.h ??
 #define BV(bit)               (1 << bit)
-#endif
-#ifndef set_bit()
 #define set_bit(sfr, bit)     (_SFR_BYTE(sfr) |= BV(bit))  // old sbi()
-#endif
-#ifndef clear_bit()
 #define clear_bit(sfr, bit)   (_SFR_BYTE(sfr) &= ~BV(bit)) // old cbi()
-#endif
-#ifndef toggle_bit()
 #define toggle_bit(sfr, bit)  (_SFR_BYTE(sfr) ^= BV(bit))  
-#endif
 
 void pulseEnable(void);
 void sendNibble(byte data);
 void sendByte(byte data);
 void LCD_cmd(byte cmd);
+void LCD_char(byte ch);
+void LCD_init();
+void LCD_clear();
+void LCD_home();
+void LCD_goto(byte x, byte y);
+void LCD_line(byte row);
+void LCD_message(const char *text);
+void LCD_hex(int data);
+void LCD_integer(int data);
 
 
 #endif  // LCD_H
