@@ -86,20 +86,32 @@ void LCD_init(){
 }  // end LCD_init()
 
 void LCD_clear(){
-	
+	LCD_cmd(CLEARDISPLAY);
+	_delay_ms(3);
 }  // end LCD_clear()
 
-void LCD_home(){
-	
+void LCD_home(){                      // far left, CR
+	LCD_cmd(SETCURSOR);
 }  // end LCD_home()
 
 void LCD_goto(byte x, byte y){
-	
+	byte line;                        // line 0 at address 0x00 see optrex data sheet page 18
+	switch(y){
+		case 1: line = 0x40; break;
+		case 2: line = 0x14; break;   // line 3 of 4 line display
+		case 3: line = 0x54; break;   // line 4 of 4 line display
+	}
+	LCD_cmd(SETCURSOR+line+x);        // update cursor to x,y
 }  // end LCD_goto()
 
-void LCD_message(const char *text){
-	
-}  // end LCD_message()
+void LCD_line(byte row){              // moves cursor to specified line, no CR
+	LCD_goto(0, row);                 // use in conjunction with LCD_home to put at beginning of specified line
+}  // end LCD_line()
+
+void LCD_string(const char *text){
+	while (*text)                     // until /0 character
+	LCD_char(*text++);                // increment after to update pointer
+}  // end LCD_string()
 
 void LCD_hex(int data){
 	

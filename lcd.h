@@ -66,9 +66,9 @@ typedef int8_t sbyte;
 */
 
 /**
- @brief initialize ports and appropriate pins for output
-        for LCD data and LCD control ports
- @param   none
+ @brief    initialize ports and appropriate pins for output
+              for LCD data and LCD control ports
+ @param    none
  @return   none
  @see      
 */
@@ -76,9 +76,9 @@ typedef int8_t sbyte;
 
 
 /**
- @brief  pulse enable line to "clock" data from LCD data port
-          to LCD memory/display
- @param   none
+ @brief    pulse enable line to "clock" data from LCD data port
+             to LCD memory/display
+ @param    none
  @return   none
  @see      
 */
@@ -86,9 +86,9 @@ void pulseEnable(void);
 
 
 /**
- @brief  send 4-bits of data, mainly for LCD in 4-bit mode
-         would have to add functionality for 8-bit mode
- @param   byte/nibble, 4-bits of data to be sent
+ @brief    send 4-bits of data, mainly for LCD in 4-bit mode
+             would have to add functionality for 8-bit mode
+ @param    byte/nibble, 4-bits of data to be sent
  @return   none
  @see      
 */
@@ -96,9 +96,9 @@ void sendNibble(byte data);
 
 
 /**
- @brief  send 8-bits of data to LCD, used for 8-bit commands
-		 assuming LCD is being used in 4-bit mode
- @param byte, 8-bits of data to be sent
+ @brief    send 8-bits of data to LCD, used for 8-bit commands
+		      assuming LCD is being used in 4-bit mode
+ @param    byte, 8-bits of data to be sent
  @return   none
  @see      
 */
@@ -123,7 +123,7 @@ void LCD_char(byte ch);
 
 /**
  @brief
- @param   none
+ @param    none
  @return   none
  @see      hitachi data sheet pg. 46
            optrex data sheet pg. 33
@@ -132,7 +132,7 @@ void LCD_init(void);
 
 /**
  @brief
- @param   none
+ @param    none
  @return   none
  @see    
 */
@@ -140,22 +140,25 @@ void LCD_clear(void);
 
 /**
  @brief
- @param   none
+ @param    none
  @return   none
  @see      
 */
 void LCD_home(void);
 
 /**
- @brief
+ @brief    places cursor at home position without clearing the display
+             just as a carriage return, CR
  @param
  @return   none
- @see      
+ @see      optrex data sheet page 18
 */
 void LCD_goto(byte x, byte y);
 
 /**
- @brief
+ @brief   moves cursor to specified line, no CR
+           use in conjunction with LCD_home()
+		   to put cusor at beginning of specified line
  @param
  @return   none
  @see      
@@ -163,12 +166,12 @@ void LCD_goto(byte x, byte y);
 void LCD_line(byte row);
 
 /**
- @brief
- @param
+ @brief    display string of text on LCD
+ @param    pointer to char array
  @return   none
  @see      
 */
-void LCD_message(const char *text);
+void LCD_string(const char *text);
 
 /**
  @brief
