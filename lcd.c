@@ -67,6 +67,21 @@ void LCD_char(byte ch){
 }  // end LCD_char()
 
 void LCD_init(){
+	setupLCDPorts();                  // set proper data directions and pins to outputs
+	_delay_ms(15);
+	LCD_cmd(0b00110000);              // see data sheet for timings and initialization sequence for 4-bit mode
+	_delay_ms(5);                     // optrex data sheet pg. 33
+	LCD_cmd(0b00110000);              // hitachi data sheet pg. 46
+	_delay_us(150);                   // more info in lcd.h
+	LCD_cmd(0b00110000);
+	_delay_us(50);
+	LCD_cmd(0x33);                    // initialize LCD controller
+	LCD_cmd(0x32);                    // set to 4-bit mode
+	LCD_cmd(0x28);                    // two line, 5x7 matrix
+	LCD_cmd(0x0E);                    // cursor on/off (0x0E cursor on)(0x0C cursor off)
+	LCD_cmd(0x06);                    // cursor direction (0x06 cursor right)
+	LCD_cmd(0x01);                    // clear display
+	_delay_ms(3);                     // wait for LCD to initialize
 	
 }  // end LCD_init()
 

@@ -123,27 +123,28 @@ void LCD_char(byte ch);
 
 /**
  @brief
- @param
+ @param   none
  @return   none
- @see      
+ @see      hitachi data sheet pg. 46
+           optrex data sheet pg. 33
 */
-void LCD_init();
+void LCD_init(void);
 
 /**
  @brief
- @param
+ @param   none
  @return   none
- @see      
+ @see    
 */
-void LCD_clear();
+void LCD_clear(void);
 
 /**
  @brief
- @param
+ @param   none
  @return   none
  @see      
 */
-void LCD_home();
+void LCD_home(void);
 
 /**
  @brief
