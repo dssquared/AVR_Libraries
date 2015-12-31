@@ -66,8 +66,19 @@ typedef int8_t sbyte;
 */
 
 /**
- @brief
- @param
+ @brief initialize ports and approprieate pins for output
+        for LCD data and LCD control ports
+ @param   none
+ @return   none
+ @see      
+*/
+ void setupLCDPorts(void);
+
+
+/**
+ @brief  pulse enable line to "clock" data from LCD data port
+          to LCD memory/display
+ @param   none
  @return   none
  @see      
 */
@@ -75,8 +86,9 @@ void pulseEnable(void);
 
 
 /**
- @brief
- @param
+ @brief  send 4-bits of data, mainly for LCD in 4-bit mode
+         would have to add funcitonality for 8-bit mode
+ @param   byte/nibble, 4-bits of data to be sent
  @return   none
  @see      
 */
@@ -84,8 +96,9 @@ void sendNibble(byte data);
 
 
 /**
- @brief
- @param
+ @brief  send 8-bits of data to LCD, used for commands
+         that cannot be sent in 4-bits in 4-bit mode
+ @param byte, 8-bits of data to be sent
  @return   none
  @see      
 */
