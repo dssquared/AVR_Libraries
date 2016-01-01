@@ -22,28 +22,37 @@
 /**
 * @name definitions
 */
-#ifndef LCD_CONTROL               // LCD control port of MCU //
+#ifndef LCD_CONTROL                  // LCD control port of MCU //
 #define LCD_CONTROL     PORTB
 #endif
-#ifndef LCD_DATA                     // LCD data port of MCU //
+#ifndef LCD_DATA                        // LCD data port of MCU //
 #define LCD_DATA        PORTD
 #endif
-#ifndef LCD_RS                    // LCD register select pin //
+// need to find more elegant way of doing DDRx and PORTx
+// if not using the same ports, maybe function that takes
+// ports as argument?? 
+#ifndef DIRECTION_LCD_CONTROL // Data direction LCD control port//
+#define DIRECTION_LCD_CONTROL     DDRB
+#endif
+#ifndef DIRECTION_LCD_DATA      // Data direction LCD data port //
+#define DIRECTION_LCD_DATA        DDRD
+#endif
+#ifndef LCD_RS                       // LCD register select pin //
 #define LCD_RS          0
 #endif
-#ifndef LCD_ENABLE                         // LCD enable pin //
+#ifndef LCD_ENABLE                            // LCD enable pin //
 #define LCD_ENABLE      1
 #endif
-#ifndef D4                               // LCD data line D4 //
+#ifndef D4                                  // LCD data line D4 //
 #define D4              4
 #endif
-#ifndef D5                               // LCD data line D5 //
+#ifndef D5                                  // LCD data line D5 //
 #define D5              5
 #endif
-#ifndef D6                               // LCD data line D6 //
+#ifndef D6                                  // LCD data line D6 //
 #define D6              6
 #endif
-#ifndef D7                               // LCD data line D7 //
+#ifndef D7                                  // LCD data line D7 //
 #define D7              7
 #endif
 

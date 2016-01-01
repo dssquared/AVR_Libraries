@@ -32,8 +32,8 @@
 * local functions
 */
 void setupLCDPorts(){
-	LCD_CONTROL |= ((1 << LCD_RS) | (1 << LCD_ENABLE));          // LCD control lines as output
-	LCD_DATA |= ((1 << D7) | (1 << D6) | (1 << D5) | (1 << D4)); // LCD data lines as output
+	DIRECTION_LCD_CONTROL |= ((1 << LCD_RS) | (1 << LCD_ENABLE));          // LCD control lines as output
+	DIRECTION_LCD_DATA |= ((1 << D7) | (1 << D6) | (1 << D5) | (1 << D4)); // LCD data lines as output
 }  // end setupLCDPorts()
 
 void pulseEnable(){
