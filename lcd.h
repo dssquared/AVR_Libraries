@@ -59,8 +59,7 @@
 #define CLEARDISPLAY   0X01
 #define SETCURSOR      0X80
 
-typedef uint8_t byte;
-typedef int8_t sbyte;
+typedef uint8_t byte;      // byte is easier to type and I like it 
 
 // if macros.h is included from any other file this is not needed
 // ?? maybe just include macros.h ??
