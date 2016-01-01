@@ -174,7 +174,7 @@ void LCD_line(byte row);
 void LCD_string(const char *text);
 
 /**
- @brief
+ @brief    display hex value of data at current cursor position
  @param
  @return   none
  @see      

@@ -95,7 +95,7 @@ void LCD_home(){                      // far left, CR
 }  // end LCD_home()
 
 void LCD_goto(byte x, byte y){
-	byte line;                        // line 0 at address 0x00 see optrex data sheet page 18
+	byte line = 0x00;                 // line 0 at address 0x00 see optrex data sheet page 18
 	switch(y){
 		case 1: line = 0x40; break;
 		case 2: line = 0x14; break;   // line 3 of 4 line display
