@@ -114,11 +114,16 @@ void LCD_string(const char *text){
 }  // end LCD_string()
 
 void LCD_hex(int data){
-	
+	char ahex[8] = "";
+	itoa(data, ahex, 16);             // convert to ascii hex
+	//LCD_string("0x");               // add hex prefix 0x
+	LCD_string(ahex);
 }  // end LCD_hex()
 
 void LCD_integer(int data){
-	
+	char ahex[8] = "";
+	itoa(data, ahex, 10);             // convert to ascii
+	LCD_string(ahex);
 }  // end LCD_integer()
 
 
