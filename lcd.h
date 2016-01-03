@@ -2,18 +2,19 @@
 ****  Title: C include file for LCD library (lcd.c)     ****
 ****  Author: David Schwehr 2015                        ****
 ****  File:                                             ****
-****  Software:                                         ****
-****  Target:                                           ****
+****  Software:   AVR-GCC                               ****
+****  Target:     AVR-micros with proper pin defines    ****
 ************************************************************/
 /**
 @mainpage
-@author
-@file
-@code
-@brief
-@see
-@version
-@copyright
+@author       David Schwehr  github: dssquared
+@file         lcd.h
+@code         AVR C GCC
+@brief        include file for LCD library for use with 2x16 to 4x20
+                 LCDs with 44780 controller
+@see          Hitachi, Optrex data sheets
+@version      1.0
+@copyright  (c)  2015 David Schwehr
  */
 
 #ifndef LCD_H
@@ -114,23 +115,26 @@ void sendByte(byte data);
 
 
 /**
- @brief
- @param
+ @brief    sends byte to be written to LCD
+			 such as register value or memory address
+ @param    byte to be written to LCD
  @return   none
  @see      
 */
 void LCD_cmd(byte cmd);
 
 /**
- @brief
- @param
+ @brief    display single character on LCD
+ @param    byte ascii value
  @return   none
  @see      
 */
 void LCD_char(byte ch);
 
 /**
- @brief
+ @brief    initialization of LCD, needs to be called
+              before LCD can be used, contains all settings
+			  such as matrix size, cursor on/off blink etc.
  @param    none
  @return   none
  @see      hitachi data sheet pg. 46
@@ -147,7 +151,7 @@ void initLCD(void);
 void LCD_clear(void);
 
 /**
- @brief
+ @brief    clears display and moves cursor position to 0,0
  @param    none
  @return   none
  @see      
@@ -157,7 +161,7 @@ void LCD_home(void);
 /**
  @brief    places cursor at home position without clearing the display
              just as a carriage return, CR
- @param
+ @param    x,y location as bytes of desired cursor position
  @return   none
  @see      optrex data sheet page 18
 */
@@ -165,16 +169,16 @@ void LCD_goto(byte x, byte y);
 
 /**
  @brief   moves cursor to specified line, no CR
-           use in conjunction with LCD_home()
-		   to put cusor at beginning of specified line
- @param
+           use in conjunction with LCD_home()   ***  need to check this ***
+		   to put cursor at beginning of specified line
+ @param    byte, number of row 0-3
  @return   none
  @see      
 */
 void LCD_line(byte row);
 
 /**
- @brief    display string of text on LCD
+ @brief    display string of text on LCD at current cursor position
  @param    pointer to char array
  @return   none
  @see      
@@ -183,15 +187,15 @@ void LCD_string(const char *text);
 
 /**
  @brief    display hex value of data at current cursor position
- @param
+ @param    int data to be displayed as hex
  @return   none
  @see      
 */
 void LCD_hex(int data);
 
 /**
- @brief
- @param
+ @brief    display integer value of data at current cursor position
+ @param    int data to be displayed as integer
  @return   none
  @see      
 */
